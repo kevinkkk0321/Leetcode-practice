@@ -37,3 +37,20 @@ bool isHappy(int n) {
         }  
         return n==1;  
 }
+
+//unhappy number），所有不快樂數的數位平方和計算，最後都會進入 4 → 16 → 37 → 58 → 89 → 145 → 42 → 20 → 4 的循環中
+class Solution {
+public:
+    bool isHappy(int n) {        
+        while(n){     
+            if(n==4) return false;
+            if(n==1) return true;
+            int ans=0;
+            while(n){
+                ans += (n%10)*(n%10);
+                n/=10;
+            }
+            n = ans;            
+        }
+    }
+};

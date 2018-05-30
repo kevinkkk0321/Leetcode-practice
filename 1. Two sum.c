@@ -3,51 +3,34 @@
  */
  
  /*Hash table*/
- int* twoSum(int* nums, int numsSize, int target) {  
-    int i = 0;  
-    int min;  
-    min = nums[0];  
-    for (i = 0; i < numsSize; i++) {  
-       if (nums[i] < min)  
-           min = nums[i];  
-    }  
-    int max = target - min;  
-    int len = max - min + 1;     
-    int *table = (int*)malloc(len*sizeof(int));  
-    int *index = (int*)malloc(2*sizeof(int));  
-    if (table == NULL) {  
-        exit(1);  
-    }  
-    for (i = 0; i < len; i++) {  
-        table[i] = -1;  
-    }  
-    for (i = 0; i < numsSize; i++) {  
-        if (nums[i] <= max) {  
-            if (table[target - nums[i] -min] != -1) {  
-                index[0] = table[target - nums[i] -min];  
-                index[1] = i;  
-                break;  
-            }  
-            table[nums[i] -min] = i;  
-        }  
-    }  
-    free(table);  
-    return index;  
-}  
- 
- 
- 
- /* Iterative*/
-int* twoSum(int* nums, int numsSize, int target) {
-    int* array = (int *)malloc(sizeof(int)*3);
-    for(int i=0;i<numsSize;++i){
-        for (int j=i+1;j<numsSize;++j){
-            if(nums[i]+nums[j]==target ){
-                array[0]=i;array[1]=j;
-                return array;
-            }            
-        }
+ int* twoSum(int* nums, int numsSize, int target) {
+    int min = 100000;
+    for(int i=0;i<numsSize;i++){
+        if(nums[i]<min) min = nums[i];
     }
     
-    return NULL;
+    int max = target - min;
+    int len = max - min +1;
+    
+    int *position_table = (int *)malloc(len*sizeof(int));
+    int *res = (int *)malloc(2*sizeof(int));
+           
+    for(int i=0;i<len;i++){
+        position_table[i] = -1;
+    }
+    
+    for(int i=0;i<numsSize;i++){
+        if(nums[i]<=max){
+            if(position_table[target-nums[i]-min] != -1){
+                res[0]=position_table[target-nums[i]-min];
+                res[1]=i;
+                return res;
+            }
+            position_table[nums[i]-min] = i;
+        }    
+    }    
+    return res;
 }
+
+
+

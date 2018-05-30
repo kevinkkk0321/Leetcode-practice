@@ -1,22 +1,15 @@
 int reverse(int x) {
-    int check=1;
-    if(x==NULL) return 0;
-    else if(x<0) {
-        x=x*(-1);
-        check=-1;
+    int ans = 0;
+    while(x != 0){
+        if (abs(ans) > 214748364) return 0;
+		ans = ans*10 + x%10;        
+        x/=10;       
     }
-    int answer=0;
-    
-    while(x!=0){        
-        int temp = x%10;
-        x = x/10;
-        int temp_answer=answer*10+temp;
-        if (((temp_answer-temp)/10) != answer) return 0;  // check if answer overleaked
-        answer = temp_answer;
-    }
-    
-    
-    return answer*check;
-    
-    
+    return ans;
 }
+
+/*
+由于INT_MAX = 2147483647, INT_MIN = -21474836478
+如果ret > 214748364，那么abs(ret*10)>=2147483650一定会overflow。
+反之如果ret = 214748364，则一定有x % 10 = 1。若x%10 = 2，则原来的x = 2463847412 > INT_MAX，与输入参数为int类型矛盾。
+*/

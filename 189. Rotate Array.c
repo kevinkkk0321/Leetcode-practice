@@ -1,19 +1,13 @@
 void rotate(int* nums, int numsSize, int k) {
     
     int i=0;
-    int *new_nums= (int *)malloc(sizeof(int)*numsSize);
-    
-    
+    int new_nums[numsSize];
     for(i=0;i<numsSize;i++){
         new_nums[(i+k)%numsSize] = nums[i];
     }
-    for(i=0; i<numsSize; i++)
+    for(i=0;i<numsSize;i++){
         nums[i] = new_nums[i];
-
-    free(new_nums);
-    
-    return nums;
-    
+    }     
 }
 
 void rotate(int* nums, int numsSize, int k) {  
