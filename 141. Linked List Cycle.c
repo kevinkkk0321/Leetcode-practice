@@ -2,21 +2,23 @@
  * Definition for singly-linked list.
  * struct ListNode {
  *     int val;
- *     struct ListNode *next;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
- 
- /* Applying Fast-slow pointer to check */
-
-bool hasCycle(struct ListNode *head) {
-    
-    struct ListNode *fast=head, *slow=head;
-    
-    while(slow   && fast  && fast->next){
-        fast = fast->next->next;
-        slow = slow->next;
-                
-        if(fast == slow) return true;
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        ListNode *first = head;
+        ListNode *second = head;
+        while(first && second && first->next){ // && first->next->next
+            first = first->next->next;
+            second = second->next;
+            
+            if(first == second) return true;
+            
+        }    
+        return false;
     }
-    return false;
-}
+};
+

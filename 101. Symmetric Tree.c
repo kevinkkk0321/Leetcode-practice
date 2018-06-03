@@ -2,23 +2,22 @@
  * Definition for a binary tree node.
  * struct TreeNode {
  *     int val;
- *     struct TreeNode *left;
- *     struct TreeNode *right;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-
-bool checktree(struct TreeNode* node1, struct TreeNode* node2);
-
-bool isSymmetric(struct TreeNode* root) {
-    return checktree(root, root);
-}
-
-bool checktree(struct TreeNode* node1, struct TreeNode* node2){
-    if(node1==NULL && node2==NULL) return true;
-    else if((!node1 && node2) || (node1 && !node2)) return false;
-    else if(node1->val != node2->val) return false;
-    else return checktree(node1->left, node2->right) && checktree(node2->right, node1->left);
-}
-
-
-
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+        if(!root) return true;
+        return Equal(root->left, root->right);
+    }
+    bool Equal(TreeNode* p, TreeNode* q)
+    {
+        if(!p && !q) return true;
+        else if((!p && q) || (!q && p) )return false;
+        else if (p->val != q->val) return false;
+        else return Equal(p->left, q->right) && Equal(p->right, q->left);        
+    }
+};
