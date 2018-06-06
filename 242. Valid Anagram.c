@@ -1,4 +1,3 @@
-/* C -- method 1 */
 bool isAnagram(char* s, char* t) {
     int a[26]={0},b[26]={0};  
     int i;  
@@ -13,13 +12,9 @@ bool isAnagram(char* s, char* t) {
     }  
     for(i=0;i<26;i++)  
     {  
-        if(a[i]!=b[i])  
-            break;  
-    }  
-    if(i==26)  
-        return true;  
-    else  
-        return false;  
+        if(a[i]!=b[i])  return false;  
+    }      
+    return true;  
 }
 
 

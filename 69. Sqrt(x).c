@@ -15,6 +15,23 @@ int mySqrt(int x) {
     return (int)high;
 }
 
+int mySqrt(int x) {
+    long high = x;
+    long low = 1;
+    long medium;
+    
+    while(1){
+        medium = (high+low)/2;
+        if(x==medium*medium) return medium;
+        else if (medium*medium>x) high = medium-1; 
+        else {
+            if(((medium+1)*(medium+1)) > x) return medium;
+            low = medium+1;
+        }
+    }
+	return;
+}
+
 
 /*Newton's method*/
 /*

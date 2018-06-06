@@ -14,3 +14,13 @@ int majorityElement(int* nums, int numsSize) {
     
      return ans;
 }
+
+/*sorting*/
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        int middle = (nums.size()-1)/2;
+        return nums[middle];
+    }
+};
