@@ -32,8 +32,28 @@
     return res;
 }
 
+/*C++  new */
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> hash;
+	    vector<int> result;
+        for(int i=0; i<nums.size(); i++){
+            int numbertofind = target - nums[i];
+            if(hash.find(numbertofind) == hash.end())
+                hash[nums[i]] = i;
+            else
+            {
+                result.push_back(hash[numbertofind]);
+                result.push_back(i);
+                return result;
+            }   
+        }
+    }
+};
 
-/*C++*/
+
+/*C++  old */
 vector<int> twoSum(vector<int> &numbers, int target)
 {
     //Key is the number and value is its index in the vector.
@@ -42,7 +62,7 @@ vector<int> twoSum(vector<int> &numbers, int target)
 	for (int i = 0; i < numbers.size(); i++) {
 		int numberToFind = target - numbers[i];
 
-            //if numberToFind is found in map, return them
+        //if numberToFind is found in map, return them
 		if (hash.find(numberToFind) != hash.end()) {
                     //+1 because indices are NOT zero based
 			result.push_back(hash[numberToFind] + 1);
@@ -50,11 +70,13 @@ vector<int> twoSum(vector<int> &numbers, int target)
 			return result;
 		}
 
-            //number was not found. Put it in the map.
+        //number was not found. Put it in the map.
 		hash[numbers[i]] = i;
 	}
 	return result;
 }
+
+
 
 
 
