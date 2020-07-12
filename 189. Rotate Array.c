@@ -1,13 +1,17 @@
 void rotate(int* nums, int numsSize, int k) {
-    
-    int i=0;
-    int new_nums[numsSize];
-    for(i=0;i<numsSize;i++){
-        new_nums[(i+k)%numsSize] = nums[i];
+    vector<int> new_nums = nums;
+    for (int i = 0; i < nums.size(); ++i) {
+        nums[(i + k) % nums.size()] = new_nums[i];
     }
-    for(i=0;i<numsSize;i++){
-        nums[i] = new_nums[i];
-    }     
+}
+
+void rotate(vector<int>& nums, int k) {
+        if (nums.empty() || (k %= nums.size()) == 0) return;
+        
+        for(int i=0;i<nums.size()-k;i++){
+            nums.push_back(nums[0]);
+            nums.erase(nums.begin());
+        }
 }
 
 void rotate(int* nums, int numsSize, int k) {  
@@ -21,3 +25,6 @@ void rotate(int* nums, int numsSize, int k) {
         nums[0]=tem;  
     }  
 }  
+
+
+
