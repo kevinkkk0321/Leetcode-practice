@@ -36,7 +36,7 @@ int main()
 
 
 Bubble_sort(int *number,int n){
-    int i;int j; int temp;
+  int i;int j; int temp;
 	for(i=0;i<n;i++)
 	{
 		for(j=0;j<n-1-i;j++)
@@ -49,54 +49,34 @@ Bubble_sort(int *number,int n){
 		}
 	}
 }
-quicksort(int *data, int left, int right)
-{
-    int pivot, i, j;
+void quicksort(vector<int>& nums, int left, int right){
+    if(left >= right)
+        return;
+    int pivot = nums[left];
+    int index = left;
 
-    if (left >= right) { return; }
-
-    pivot = data[left];
-
-    i = left + 1;
-    j = right;
-
-    while (1)
-    {
-        while (i <= right)
-        {
-            if (data[i] > pivot)
-            {
-                break;
-            }
-
-            i = i + 1;
-        }
-
-        while (j > left)
-        {
-            if (data[j] < pivot)
-            {
-                break;
-            }
-
-            j = j - 1;
-        }
-
-        if (i > j) { break; }
-
-        swap(&data[i], &data[j]);
+    for(int i=index;i<=right;i++){
+        if(nums[i]<pivot)
+            swap(nums[++index], nums[i]); //the ++index matters
     }
+    swap(nums[left], nums[index]);
 
-    swap(&data[left], &data[j]);
-
-    quicksort(data, left, j - 1);
-    quicksort(data, j + 1, right);
+    quicksort(nums, left, index-1);
+    quicksort(nums, index+1, right);
 }
+
 void swap(int *a, int *b)
 {
     int temp = *a;
     *a = *b;
     *b = temp;
+}
+
+void swap(int &a, int &b)
+{
+    int temp = a;
+    a = b;
+    b = temp;
 }
 
 void mergesort(int a[],int i,int j)
@@ -166,4 +146,3 @@ Insertion_Sort(int *number,int n){
     }
  }
 */
-
