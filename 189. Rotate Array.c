@@ -6,6 +6,15 @@ void rotate(int* nums, int numsSize, int k) {
 }
 
 void rotate(vector<int>& nums, int k) {
+	if (nums.empty()) return;
+	k %= nums.size();
+	if (k == 0) return;
+	reverse(begin(nums), end(nums));
+	reverse(begin(nums), begin(nums) + k);
+	reverse(begin(nums) + k, end(nums));
+}
+
+void rotate(vector<int>& nums, int k) {
         if (nums.empty() || (k %= nums.size()) == 0) return;
         
         for(int i=0;i<nums.size()-k;i++){
