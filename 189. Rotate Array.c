@@ -1,8 +1,14 @@
-void rotate(int* nums, int numsSize, int k) {
-    vector<int> new_nums = nums;
-    for (int i = 0; i < nums.size(); ++i) {
-        nums[(i + k) % nums.size()] = new_nums[i];
+vector<int> CyclicRotation(vector<int> &A, int K) {
+    // write your code in C++14 (g++ 6.2.0)
+	if(A.size()==0) return A;
+
+    while (K > 0) {
+        int head = A[A.size()-1];
+        A.pop_back();
+        A.insert(A.begin(), head);
+        K--;
     }
+    return A;
 }
 
 void rotate(vector<int>& nums, int k) {
