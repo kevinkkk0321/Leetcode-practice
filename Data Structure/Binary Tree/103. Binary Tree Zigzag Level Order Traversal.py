@@ -30,9 +30,7 @@ class Solution(object):
             if count % 2 == 0:
                 result_levels.append(tmp_level)
             else:
-                result_levels.append(tmp_level[::-1])
+                result_levels.append(tmp_level[::-1]) # <object>[first_index:last_index:step]
             count += 1
 
         return result_levels
-
-        
