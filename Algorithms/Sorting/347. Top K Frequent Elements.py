@@ -15,3 +15,5 @@ class Solution(object):
 
         arr = sorted(dic, key = dic.get, reverse = True)
         return arr[:k]
+
+        # return heapq.nlargest(k, dic.keys(), key=dic.get) 
