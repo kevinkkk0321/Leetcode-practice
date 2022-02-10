@@ -4,13 +4,14 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        first_num, second_num = float("inf"), float("inf")
+        first = second = float('inf')
 
-        for n in nums:
-            if n <= first_num:
-                first_num = n
-            elif n <= second_num:
-                second_num = n
-            else:
+        for num in nums:
+            if num < first:
+                first = num
+            elif first < num < second:
+                second = num
+            if num > second:
                 return True
         return False
+            
